@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>체육시설 통합 예약 시스템</title>
+  <meta name="description" content="강당/뜨란채 예약 바로가기 허브" />
+  <meta name="theme-color" content="#f5f7fb" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --ring: 34 94% 52%;
+      --primary: 221 83% 53%; /* blue-600 */
+      --primary-ink: #ffffff;
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1220;
+        --card: #111827;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --primary-ink: #eaf2ff;
+        --shadow: 0 10px 25px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.35);
+      }
+      meta[name="theme-color"] { content: #0b1220; }
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Noto Sans KR', system-ui, -apple-system, Segoe UI, Roboto, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(59, 130, 246, 0.08), transparent 60%),
+                  radial-gradient(900px 600px at 10% 110%, rgba(16, 185, 129, 0.10), transparent 60%),
+                  var(--bg);
+      display: flex;
+      flex-direction: column;
+      min-height: 100svh;
+    }
+
+    .container {
+      width: min(920px, 92vw);
+      margin: 0 auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      flex: 1;
+    }
+
+    header {
+      text-align: center;
+      margin-top: clamp(24px, 6vh, 72px);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-size: clamp(22px, 4.2vw, 36px);
+    }
+    .version {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(12px, 2.6vw, 14px);
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: clamp(18px, 3.2vw, 32px);
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    @media (min-width: 640px) {
+      .actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    a.btn {
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: hsl(var(--primary));
+      color: var(--primary-ink);
+      font-weight: 700;
+      font-size: clamp(16px, 2.8vw, 18px);
+      letter-spacing: 0.01em;
+      box-shadow: 0 8px 18px hsla(221, 83%, 53%, 0.25);
+      transform: translateY(0);
+      transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+      outline: none;
+    }
+    a.btn:hover { transform: translateY(-1px); box-shadow: 0 14px 28px hsla(221, 83%, 53%, 0.28); filter: brightness(1.02); }
+    a.btn:active { transform: translateY(0); box-shadow: 0 6px 14px hsla(221, 83%, 53%, 0.24); }
+    a.btn:focus-visible { box-shadow: 0 0 0 4px hsla(var(--ring) / 0.35), 0 8px 18px hsla(221, 83%, 53%, 0.25); }
+
+    .btn svg { width: 22px; height: 22px; flex: 0 0 22px; }
+
+    .subtle {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    footer {
+      width: min(920px, 92vw);
+      margin: 24px auto 18px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    .credit {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      a.btn { transition: none; }
+      a.btn:hover, a.btn:active { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>체육시설 통합 예약 시스템</h1>
+      <p class="version">(ver 1.0 최종업데이트 25.9.4)</p>
+    </header>
+
+    <section class="card" aria-label="예약 바로가기">
+      <div class="actions">
+        <a class="btn" href="https://ddochi-t.github.io/gang25/" target="_blank" rel="noopener" aria-label="강당 예약으로 이동(새 탭)">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 21V9l9-6 9 6v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 21v-6h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          강당 예약
+        </a>
+        <a class="btn" href="https://ddochi-t.github.io/dran25/" target="_blank" rel="noopener" aria-label="뜨란채 예약으로 이동(새 탭)">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          뜨란채 예약
+        </a>
+      </div>
+      <p class="subtle">원하는 시설을 선택하면 새 탭에서 예약 페이지가 열립니다.</p>
+    </section>
+  </div>
+
+  <footer>
+    <div class="credit">제작: 또치쌤</div>
+  </footer>
+</body>
+</html>
